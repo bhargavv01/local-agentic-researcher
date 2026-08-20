@@ -1,0 +1,111 @@
+# ==========================================
+# Secrets, Credentials & Environment Files
+# ==========================================
+.env
+.env.*
+!.env.example
+*.env
+secrets/
+secret*.json
+credentials.json
+auth.json
+token.json
+tokens.json
+oauth*.json
+*.pem
+*.key
+*.crt
+*.pfx
+*.p12
+*.cer
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# ==========================================
+# Byte-compiled / optimized / DLL files
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.dylib
+*.dll
+
+# ==========================================
+# Virtual Environments
+# ==========================================
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+conda-env/
+
+# ==========================================
+# Testing, Coverage & Type Checking
+# ==========================================
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# ==========================================
+# Packaging & Distribution
+# ==========================================
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+develop-eggs/
+downloads/
+eggs/
+parts/
+var/
+sdist/
+wheels/
+*.whl
+
+# ==========================================
+# Runtime Artifacts, Logs & Generated Output
+# ==========================================
+*.log
+logs/
+*.sqlite
+*.sqlite3
+*.db
+outputs/
+runs/
+sample_report.md
+sample_state.json
+
+# ==========================================
+# Editor & OS Metadata
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
