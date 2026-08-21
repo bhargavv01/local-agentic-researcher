@@ -4,7 +4,7 @@ A local-first, autonomous multi-agent research assistant built with **Python**, 
 
 ---
 
-## Architecture & System Overview
+## 🏗️ Architecture & Execution Loop
 
 ```
 User Query
@@ -44,26 +44,48 @@ User Query
 
 ---
 
-## Phase 1 Completed Components
+## 🚀 Interfaces & User Experience
 
-1. **State & Data Contracts (`local_researcher.models.state`)**:
-   - Strongly-typed Pydantic V2 schemas for global DAG state (`ResearchState`), steps, source documents, atomic facts, and agent I/O contracts (`PlanOutput`, `CritiqueOutput`, `SynthesisOutput`).
-2. **Small LLM (3B) Client Engine (`local_researcher.llm.client`)**:
-   - Ollama client with JSON schema constraints, automatic markdown/JSON fence stripping, trailing comma repair, and multi-retry error reflection.
-   - Deterministic `MockLLMClient` for offline execution, unit testing, and benchmarking without an active GPU.
-3. **Custom Python Tool Calling (`local_researcher.tools`)**:
-   - `DuckDuckGoSearchEngine`: Live web search with direct library and HTML fallback.
-   - `WikipediaSearchEngine`: Encyclopedic queries via official Wikipedia APIs.
-   - `ArxivSearchEngine`: Scholarly search via arXiv XML/Atom API.
-   - `WebScraper`: Text extraction with `trafilatura` and `BeautifulSoup4` with context-window token bounding.
-4. **Test Suite (`tests/`)**:
-   - 17 comprehensive unit tests covering models, JSON schema parsing, tool extraction, and LLM repair logic.
+### 1. Interactive Streamlit Web Dashboard (`app.py`)
+A full web UI featuring real-time DAG progress tracking, interactive agent tabs, and one-click file downloads.
+
+```bash
+# Launch Streamlit Web UI
+streamlit run app.py
+```
+
+**Web UI Features:**
+- ⚙️ **Sidebar Controls**: Model selection, Ollama endpoint detector, mock simulator toggle, confidence threshold slider, max iterations, search provider toggles.
+- 📌 **Preset Topics**: 1-click test runs on complex research domains.
+- 📑 **Report Viewer**: Rendered Markdown with citation links, executive summaries, and `.md`/`.json` download buttons.
+- 🧠 **Planner Analysis**: Sub-query decomposition inspection and reasoning.
+- 🌐 **Evidence & Fact Explorer**: Expandable source document previews and grounded atomic facts.
+- ⚖️ **Critic Quality Audit**: Confidence, relevance, and factual grounding meters + auditor feedback.
+- ⏱️ **DAG Execution Trace**: Interactive step-by-step audit trail table.
 
 ---
 
-## Quickstart & Testing
+### 2. Enhanced Terminal Rich CLI (`local_researcher/cli.py`)
 
 ```bash
-# Run test suite
+# Run with Local Ollama
+python -m local_researcher.cli "Autonomous Multi-Agent AI Architectures in 2025" --model llama3.2:3b --output-file report.md
+
+# Run Offline / Mock Mode
+python -m local_researcher.cli "Deep Learning Optimization Techniques" --mock --output-file report.md --json-out state.json
+```
+
+**CLI Features:**
+- 🎨 Modern color-coded agent tags (`[PLANNER]`, `[RESEARCHER]`, `[CRITIC]`, `[SYNTHESIZER]`).
+- 📊 Real-time ASCII progress gauges (`[████████░░] 85%`).
+- ⚖️ Critic scorecard table and decision gate status.
+- 🏆 Post-execution summary card with elapsed timing, iterations count, and source metrics.
+
+---
+
+## 🧪 Testing
+
+```bash
+# Run the complete test suite (27 unit & integration tests)
 python -m pytest -v
 ```
